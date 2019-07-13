@@ -1,4 +1,4 @@
-/*package org.Kader.controller;
+package org.Kader.controller;
 
 import org.Kader.dao.ProductRepository;
 import org.Kader.enties.Product;
@@ -42,4 +42,3 @@ public class controllerMVC {
 		return "redirect:/index?page="+page+"&size="+size+"&motCle="+motCle;
 	}
 }
-*/
