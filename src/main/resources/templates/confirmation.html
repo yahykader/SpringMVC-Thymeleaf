@@ -12,37 +12,38 @@
     <div class="panel panel-default">
         <div class="panel-heading"> Confirmation Ajout Produit</div>
         <div class="panel-body">
+                <h3 th:text="${message}" align="center"></h3>
                 <div class="form-group">
                     <label class="control-label">Id Produit :</label>
-                    <label class="control-label" th:text="${produit.id}"></label>
+                    <label class="control-label" th:text="${product.id}"></label>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Nom Produit :</label>
-                    <label class="control-label" th:text="${produit.nameProduct}"></label>
+                    <label class="control-label" th:text="${product.nom}"></label>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Description :</label>
-                    <label class="control-label" th:text="${produit.designation}"></label>
+                    <label class="control-label" th:text="${product.description}"></label>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Désignation :</label>
-                    <label class="control-label" th:text="${produit.designation}"></label>
+                    <label class="control-label" th:text="${product.designation}"></label>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Prix :</label>
-                    <label class="control-label" th:text="${produit.prix}"></label>
+                    <label class="control-label" th:text="${product.prix}"></label>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Quantité :</label>
-                    <label class="control-label" th:text="${produit.quantite}"></label>
+                    <label class="control-label" th:text="${product.quantite}"></label>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Email :</label>
-                    <label class="control-label" th:text="${produit.email}"></label>
+                    <label class="control-label" th:text="${product.email}"></label>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Date :</label>
-                    <label class="control-label" th:text="${produit.date}"></label>
+                    <label class="control-label" th:text="${product.date}"></label>
                 </div>
             </form>
 

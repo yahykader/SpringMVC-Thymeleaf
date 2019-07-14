@@ -8,10 +8,13 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -26,7 +29,7 @@ public class controllerMVC {
 						              @RequestParam(name = "size",defaultValue = "5") int size,
 						              @RequestParam(name = "motCle",defaultValue = "")String mc) {
 
-		Page<Product> pageProducts= productRepository.chercherMC("%"+mc+"%",new PageRequest(page,size));
+		Page<Product> pageProducts= productRepository.chercherMC("%"+mc+"%",PageRequest.of(page,size));
 
 		model.addAttribute("listProducts",pageProducts.getContent());
 		int [] pages=new int[pageProducts.getTotalPages()];
@@ -42,16 +45,27 @@ public class controllerMVC {
 		productRepository.deleteById(id);
 		return "redirect:/index?page="+page+"&size="+size+"&motCle="+motCle;
 	}
+
 	@RequestMapping(value="/addProduct",method = RequestMethod.GET)
-	public String addProduct(Model model){
-		model.addAttribute("produit",new Product());
+	public String addProduct(Model model,Product product){
+		model.addAttribute("product",new Product());
 		return "addProduct";
 	}
+
 	@RequestMapping(value="/save",method = RequestMethod.POST)
-	public String save(Model model,Product p){
-		productRepository.save(p);
-		model.addAttribute("produit",p);
-		return "confirmation";
+	public String save(Model model, @Valid Product product, Errors errors){
+
+		if(errors.hasErrors()){
+			return "addProduct";
+		}else{
+			productRepository.save(product);
+			model.addAttribute("message","Registration Successfully...");
+			model.addAttribute("product",product);
+			//return "addProduct";
+			return "confirmation";
+		}
+
+
 	}
 
 }

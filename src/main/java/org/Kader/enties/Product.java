@@ -12,21 +12,23 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.*;
 
-@Data @AllArgsConstructor @NoArgsConstructor
-
 @Entity
+@Data @AllArgsConstructor @NoArgsConstructor
 public class Product implements Serializable{
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotNull @Size(min=2,max=15)
-	private String nameProduct;
+	@NotNull
+	@Size(min=2,max=15,message = "le nom doit être entre 2 et 15 caractére")
+	private String nom;
 
-	@NotNull @Size(min=10,max=100)
+	@NotNull
+	@Size(min=10,max=100,message = "le description doit être entre 10 et 100 caractére")
 	private String description;
 
-	@NotNull @Size(min=4,max=25)
+	@NotNull
+	@Size(min=4,max=25,message = "le designation doit être entre 4 et 25 caractére")
 	private String designation;
 
 	@DecimalMin("100")
@@ -34,12 +36,14 @@ public class Product implements Serializable{
 
 	@DecimalMin("1")
 	private int quantite;
-
-	@Email
+    @NotEmpty(message = "Email n'est doit pas être vide")
+	@Email(regexp = "^(.+)@(.+)$",message = "email n'est pas correcte")
 	private String email;
 
+	//@FutureOrPresent
+	//@Future
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date date;
+	private Date date=new Date();
 
 	/*@FutureOrPresent
 	private Date dateAller;

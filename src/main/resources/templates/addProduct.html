@@ -8,38 +8,53 @@
 </head>
 <body>
 
-<div class="container spacer col-md-6 col-xs-6">
+<div class="container spacer col-md-6 col-xs-6" >
+    <h3 th:text="${message}" align="center"></h3>
     <div class="panel panel-default">
         <div class="panel-heading"> Ajout Produit</div>
         <div class="panel-body">
-            <form th:action="@{save}" method="post">
+            <form th:action="@{/save}" method="post" th:object="${product}">
                 <div class="form-group">
                     <label class="control-label">Nom Produit :</label>
-                    <input class="form-control" type="text" name="nameProduct" th:value="${produit.nameProduct}"/>
+                    <input class="form-control" name="nom" type="text" th:field="*{nom}"/>
+                    <!--<span th:errors="${produit.nom}"></span>-->
+                    <p th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}" class="alert alert-danger"></p>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Description :</label>
-                    <input class="form-control" type="text" name="description" th:value="${produit.description}"/>
+                    <input class="form-control" type="text" name="description" th:field="*{description}"/>
+                   <!-- <span th:errors="${produit.description}"></span>-->
+                    <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="alert alert-danger"></p>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Désignation :</label>
-                    <input class="form-control" type="text" name="designation" th:value="${produit.designation}"/>
+                    <input class="form-control" type="text" name="designation" th:field="*{designation}"/>
+                   <!-- <span th:errors="${produit.designation}"></span>-->
+                    <p th:if="${#fields.hasErrors('designation')}" th:errors="*{designation}" class="alert alert-danger"></p>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Prix :</label>
-                    <input class="form-control" type="text" name="prix" th:value="${produit.prix}"/>
+                    <input class="form-control" type="text" name="prix" th:field="*{prix}"/>
+                   <!-- <span th:errors="${produit.prix}"></span>-->
+                    <p th:if="${#fields.hasErrors('prix')}" th:errors="*{prix}" class="alert alert-danger"></p>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Quantité :</label>
-                    <input class="form-control" type="text" name="quantite" th:value="${produit.quantite}"/>
+                    <input class="form-control" type="text" name="quantite" th:field="*{quantite}"/>
+                    <!--<span th:errors="${produit.quantite}"></span>-->
+                    <p th:if="${#fields.hasErrors('quantite')}" th:errors="*{quantite}" class="alert alert-danger"></p>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Email :</label>
-                    <input class="form-control" type="text" name="email" th:value="${produit.email}"/>
+                    <input class="form-control" type="email" name="email" th:field="*{email}"/>
+                    <!--<span th:errors="${produit.email}"></span>-->
+                    <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="alert alert-danger"></p>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Date :</label>
-                    <input class="form-control" type="text" name="date" th:value="${produit.date}"/>
+                    <input class="form-control" type="date" name="date" th:field="*{date}"/>
+                    <!--<span th:errors="${produit.date}"></span>-->
+                    <p th:if="${#fields.hasErrors('date')}" th:errors="*{date}" class="alert alert-danger"></p>
                 </div>
                 <div>
                     <button type="submit" class="btn btn-success">Ajout Produit </button>

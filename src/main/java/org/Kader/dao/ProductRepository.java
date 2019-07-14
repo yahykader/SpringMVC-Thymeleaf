@@ -15,6 +15,6 @@ public interface ProductRepository extends JpaRepository<Product, Long>{
 
      //@RestResource(path="/findByNameProductContains")
 
-     @Query("select p from Product p where p.nameProduct  like :mc")
+     @Query("select p from Product p where p.nom like :mc")
      public Page<Product> chercherMC(@Param("mc")String mc, Pageable pageable);
 }
