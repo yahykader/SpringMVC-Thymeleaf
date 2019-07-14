@@ -1,5 +1,6 @@
 package org.Kader;
 
+import java.util.Date;
 import java.util.stream.Stream;
 
 import org.Kader.dao.ProductRepository;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @SpringBootApplication
 public class SpringMvcThymeleafApplication implements CommandLineRunner {
@@ -22,9 +24,15 @@ public class SpringMvcThymeleafApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		Stream.of("Café","Thé","Lait","Eau").forEach(n->productRepository.save(new Product(n,"aaaaa","eeeeeee")));
+		Stream.of("Café","Thé","Lait","Eau").forEach(n->productRepository.save(
+				new Product(null,n,"aaaaaaaaaaaaaaa","eeeeeee",100,12,"yahyaoui@gmail.com",new Date())));
 		
-		productRepository.findAll().forEach(n-> System.out.println(n.getNameProduct()));
+		productRepository.findAll().forEach(n-> {
+            System.out.println(n.getNameProduct());
+            System.out.println(n.getEmail());
+            System.out.println(n.getDate());
+
+        });
 		
 	}
 

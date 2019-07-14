@@ -25,7 +25,8 @@
 <table class="table table-responsive">
     <thead>
        <tr>
-        <th>Id</th><th>NameProduct</th><th>Description</th><th>Designation</th><th>Delete</th>
+        <th>Id</th><th>Nom Produit</th><th>Description</th><th>Designation</th>
+        <th>Prix</th><th>Quantité</th><th>Email</th><th>Date</th><th>Delete</th>
        </tr>
     </thead>
     <tbody>
@@ -34,6 +35,11 @@
             <td th:text="${p.nameProduct}"></td>
             <td th:text="${p.description}"></td>
             <td th:text="${p.designation}"></td>
+            <td th:text="${p.prix}"></td>
+            <td th:text="${p.quantite}"></td>
+            <td th:text="${p.email}"></td>
+            <td th:text="${p.date}"></td>
+
             <td><a th:href="@{delete(id=${p.id},page=${pageCourant},size=${size},motCle=${motCle})}"
                     onclick="confirm('Etes vous sure de vouloir supprimer?..')">
                 <button class="btn btn-danger">Delete</button></a></td>

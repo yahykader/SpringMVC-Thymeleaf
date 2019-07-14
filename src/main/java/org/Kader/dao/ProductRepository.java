@@ -10,7 +10,7 @@ import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
 import org.springframework.web.bind.annotation.RestController;
 
-//@RepositoryRestController
+@RepositoryRestController
 public interface ProductRepository extends JpaRepository<Product, Long>{
 
      //@RestResource(path="/findByNameProductContains")
