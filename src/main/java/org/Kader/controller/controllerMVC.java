@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -41,10 +42,16 @@ public class controllerMVC {
 		productRepository.deleteById(id);
 		return "redirect:/index?page="+page+"&size="+size+"&motCle="+motCle;
 	}
-	@RequestMapping(value="/addProduct")
-	public String addProduct(){
-
+	@RequestMapping(value="/addProduct",method = RequestMethod.GET)
+	public String addProduct(Model model){
+		model.addAttribute("produit",new Product());
 		return "addProduct";
+	}
+	@RequestMapping(value="/save",method = RequestMethod.POST)
+	public String save(Model model,Product p){
+		productRepository.save(p);
+		model.addAttribute("produit",p);
+		return "confirmation";
 	}
 
 }
