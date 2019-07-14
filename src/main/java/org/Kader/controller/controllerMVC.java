@@ -41,4 +41,10 @@ public class controllerMVC {
 		productRepository.deleteById(id);
 		return "redirect:/index?page="+page+"&size="+size+"&motCle="+motCle;
 	}
+	@RequestMapping(value="/addProduct")
+	public String addProduct(){
+
+		return "addProduct";
+	}
+
 }

@@ -34,7 +34,8 @@
             <td th:text="${p.nameProduct}"></td>
             <td th:text="${p.description}"></td>
             <td th:text="${p.designation}"></td>
-            <td><a th:href="@{delete(id=${p.id},page=${pageCourant},size=${size},motCle=${motCle})}">
+            <td><a th:href="@{delete(id=${p.id},page=${pageCourant},size=${size},motCle=${motCle})}"
+                    onclick="confirm('Etes vous sure de vouloir supprimer?..')">
                 <button class="btn btn-danger">Delete</button></a></td>
         </tr>
     </tbody>
