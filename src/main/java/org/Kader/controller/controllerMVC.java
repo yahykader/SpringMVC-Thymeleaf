@@ -51,6 +51,12 @@ public class controllerMVC {
 		model.addAttribute("product",new Product());
 		return "addProduct";
 	}
+	@RequestMapping(value="/edit",method = RequestMethod.GET)
+	public String edit(Model model,Long id,String motCle,int page,int size){
+		Product product=productRepository.findById(id).get();
+		model.addAttribute("product",product);
+		return "edit";
+	}
 
 	@RequestMapping(value="/save",method = RequestMethod.POST)
 	public String save(Model model, @Valid Product product, Errors errors){

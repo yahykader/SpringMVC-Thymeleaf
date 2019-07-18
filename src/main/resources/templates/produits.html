@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://wwww.thymeleaf.org">
+<html xmlns:th="http://wwww.thymeleaf.org"
+      xmlns:layout="http://wwww.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
 <head>
 <meta charset="utf-8"/>
 
@@ -11,6 +13,7 @@
 <title>List Produit </title>
 </head>
 <body>
+<div layout:fragment="content">
 <div class="container">
 <h3 >Listes des Produits</h3>
     <div class="container">
@@ -26,7 +29,7 @@
     <thead>
        <tr>
         <th>Id</th><th>Nom Produit</th><th>Description</th><th>Designation</th>
-        <th>Prix</th><th>Quantité</th><th>Email</th><th>Date</th><th>Delete</th>
+        <th>Prix</th><th>Quantité</th><th>Email</th><th>Date</th><th>Delete</th><th>Edit</th>
        </tr>
     </thead>
     <tbody>
@@ -43,6 +46,9 @@
             <td><a th:href="@{delete(id=${p.id},page=${pageCourant},size=${size},motCle=${motCle})}"
                     onclick="confirm('Etes vous sure de vouloir supprimer?..')">
                 <button class="btn btn-danger">Delete</button></a></td>
+
+            <td><a th:href="@{edit(id=${p.id},page=${pageCourant},size=${size},motCle=${motCle})}">
+                <button class="btn btn-danger">Edit</button></a></td>
         </tr>
     </tbody>
 
@@ -53,7 +59,7 @@
        </li>
 
    </ul>
-
+</div>
 </div>
 </body>
 </html>
